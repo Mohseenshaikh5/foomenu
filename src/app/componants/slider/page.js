@@ -61,19 +61,31 @@ const SliderImg = ({ images }) => {
     return (
         <>
             <Container maxWidth="lg" sx={{ marginTop: '20px' }}>
+                <Stack direction="row" justifyContent="space-between" mb={5}>
+                    <Typography variant='h5' className={osfant.className}>Whats on your mind?</Typography>
+                    <Box mr={5}>
+                        <Button onClick={prevSet}
+                            sx={{
+                                "&:hover": {
+                                    backgroundColor: "whitesmoke",
+                                    borderRadius: '500px'
+                                },
+                            }} >
+                            <ChevronLeft />
+                        </Button>
+                        <Button onClick={nextSet}
+                            sx={{
+                                "&:hover": {
+                                    backgroundColor: "whitesmoke",
+                                    borderRadius: '700px'
+                                },
+                            }}
+                        >
+                            <ChevronRight />
+                        </Button>
+                    </Box>
+                </Stack>
                 <Box className={style.slider}>
-                    <Stack direction="row" justifyContent="space-between" mb={5}>
-                        <Typography variant='h5' className={osfant.className}>Whats on your mind?</Typography>
-                        <Box mr={5}>
-                            <Button onClick={prevSet} sx={{ borderRadius: "100px" }} >
-                                <ChevronLeft />
-                            </Button>
-                            <Button onClick={nextSet} sx={{ borderRadius: "100px" }} >
-                                <ChevronRight />
-                            </Button>
-                        </Box>
-                    </Stack>
-
                     <Grid container spacing={1} justifyContent="center">
                         {images.slice(currentSetIndex * itemsPerSet, (currentSetIndex + 1) * itemsPerSet).map((image, index) => (
                             <Grid item xs={2} sm={2} md={2} key={index}>

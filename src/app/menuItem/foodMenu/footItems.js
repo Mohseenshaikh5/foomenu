@@ -14,12 +14,12 @@ import SliderPage from '@/app/componants/slider/meanPage';
 import Pagination from '@mui/material/Pagination';
 import ProductCard from '@/app/componants/card/page';
 import Banner from '@/app/componants/bannner/banner';
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const FoodItem = () => {
 
-    const [foodData] = useGetfoodMenuApiMutation()
+    const [foodData, foodlistdata] = useGetfoodMenuApiMutation()
     const [foodSearch] = useGetfoodSearchApiMutation()
 
     const [foodList, setFoodList] = useState([])
@@ -95,28 +95,31 @@ const FoodItem = () => {
             <Banner handleChange={handleInputSearch} value={search} />
             <Container maxWidth="lg" sx={{ marginTop: '50px' }}>
                 <SliderPage />
-                <Divider sx={{ marginTop: '50px', height: '10px', color: 'silvergrey', font: '' }} />
+                <Divider sx={{ marginTop: '50px', height: '10px', color: 'silvergrey', }} />
             </Container>
-            <Container maxWidth="xl" sx={{ marginTop: '50px' }}>
-                <Box>
-                    <Grid container spacing={4}>
-                        {foodList.map((item) => (
-                            <Grid item xs={6} sm={6} md={3} key={item.id}>
-                                <ProductCard food={item} id={item.id} />
-                            </Grid>
-                        ))}
-                    </Grid>
+            {foodlistdata.isLoading ? (
+                <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: "20px" }}>
+                    <CircularProgress />
                 </Box>
-                {/* Pagination Controls */}
-                <Box mt={3} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Pagination
-                        count={totalItems}
-                        page={currentPage}
-                        onChange={handlePageChange}
-                        className="pagination-root"
-                    />
-                </Box>
-            </Container>
+            ) : (
+                <Container maxWidth="xl" sx={{ marginTop: '50px' }}>
+                    <Box>
+                        <Grid container spacing={4}>
+                            {foodList.map((item) => (
+                                <Grid item xs={6} sm={6} md={3} key={item.id}>
+                                    <ProductCard food={item} id={item.id} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box><Box mt={3} sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <Pagination
+                            count={totalItems}
+                            page={currentPage}
+                            onChange={handlePageChange}
+                            className="pagination-root" />
+                    </Box>
+                </Container>
+            )}
         </>
     );
 };

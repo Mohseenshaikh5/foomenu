@@ -70,42 +70,6 @@ const Navbar = () => {
                             <img src='https://lens-storage.storage.googleapis.com/png/d293640d9a5f4ec4970f503c33b0eddf' width="70px" height="60px" alt="logo" />
                         </Typography>
 
-                        {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                            <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleOpenNavMenu}
-                                color="inherit"
-                            >
-                                {/* <MenuIcon /> */}
-                        {/* <Person2Icon /> */}
-                        {/* </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorElNav}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'left',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'left',
-                                }}
-                                open={Boolean(anchorElNav)} */}
-                        {/* // onClose={() => handleCloseNavMenu('/')}
-                                sx={{
-                                    display: { xs: 'block', md: 'none' },
-                                }} */}
-                        {/* > */}
-                        {/* <MenuItem onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center" onClick={() => handleCloseNavMenu("/login")} >login</Typography>
-                                </MenuItem>
-                            </Menu> */}
-                        {/* </Box>  */}
-                        {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                         <Typography
                             variant="h5"
                             noWrap
@@ -126,43 +90,10 @@ const Navbar = () => {
                             <img src='https://lens-storage.storage.googleapis.com/png/d293640d9a5f4ec4970f503c33b0eddf' width="70px" height="60px" alt="logo" />
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            {/* <Button
-                                // onClick={handleCloseNavMenu}
-                                onClick={() => handleCloseNavMenu('/')}
 
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                Home
-                            </Button> */}
-                            {/* <Button
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                About
-                            </Button> \
-                            <Button
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                Cars
-                            </Button> */}
 
                         </Box>
-                        {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: "end", alignItems: "end" } }}>
-                            <Button
-                                // onClick={handleOpenLogin}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                LogIn
-                            </Button>
-                            <Button
-                                // onClick={handleOpenSingUp}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                SinUp
-                            </Button>
 
-                        </Box> */}
                         <Box sx={{ flexGrow: 0 }}>
 
 
