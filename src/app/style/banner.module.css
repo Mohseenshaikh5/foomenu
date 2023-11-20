@@ -1,0 +1,18 @@
+.banner{
+background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-food-overlooking-the-background-banner-picture-image_1055258.jpg");
+    background-size: cover;
+        background-position: center;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: goldenrod;
+        margin-top: 50px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius:30px ;
+}
+.style.search{
+    border-radius: 2px solid white;
+}
