@@ -24,7 +24,7 @@ const FoodItem = () => {
 
     const [foodList, setFoodList] = useState([])
     const [loadData, setLoaddata] = useState(false)
-    const [search, setSearch] = useState('')
+    const [foodSearchs, setFoodSearch] = useState('')
     // pegnition
     const [currentPage, setCurrentPage] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
@@ -32,18 +32,20 @@ const FoodItem = () => {
 
     // food Data 
     const fatchFoodData = async () => {
-        const body = {
-            page: currentPage,
-            sortBy: "NEW",
-        }
+        // const body = {
+        //     page: currentPage,
+        //     sortBy: "NEW",
+        // }
         try {
-            const response = await foodData(body)
-            const { total, current, list } = response.data;
+            const response = await foodData()
+            // const { total, current, product } = response.data;
+            const { product } = response.data;
 
-            setFoodList(list)
-            setTotalItems(total);
-            setCurrentPage(current);
-            console.log("foodList", response?.data?.list)
+
+            setFoodList(product)
+            // setTotalItems(total);
+            // setCurrentPage(current);
+            console.log("foodList", response?.data?.product)
             setLoaddata(true)
         } catch (error) {
             console.log("error", error)
@@ -62,14 +64,14 @@ const FoodItem = () => {
     // search food 
     const searchFood = async (query) => {
         const body = {
-            query: query,
-            page: currentPage,
+            search: query,
+            // page: currentPage,
         };
 
         try {
             const result = await foodSearch(body);
-            setFoodList(result.data.list)
-            console.log("search", result.data.list)
+            setFoodList(result?.data?.product)
+            console.log("search", result?.product)
         } catch (error) {
             console.log('error', error);
         }
@@ -77,7 +79,7 @@ const FoodItem = () => {
 
     const handleInputSearch = (event) => {
         const value = event.target.value;
-        setSearch(value);
+        setFoodSearch(value);
         if (value.trim() === '') {
             fatchFoodData();
         } else {
@@ -85,14 +87,14 @@ const FoodItem = () => {
         }
     };
     // pigmetion handle pages
-    const handlePageChange = (event, newPage) => {
-        setCurrentPage(newPage);
-    };
+    // const handlePageChange = (event, newPage) => {
+    //     setCurrentPage(newPage);
+    // };
 
 
     return (
         <>
-            <Banner handleChange={handleInputSearch} value={search} />
+            <Banner handleChange={handleInputSearch} value={foodSearchs} />
             <Container maxWidth="lg" sx={{ marginTop: '50px' }}>
                 <SliderPage />
                 <Divider sx={{ marginTop: '50px', height: '10px', color: 'silvergrey', }} />
@@ -105,18 +107,18 @@ const FoodItem = () => {
                 <Container maxWidth="xl" sx={{ marginTop: '50px' }}>
                     <Box>
                         <Grid container spacing={4}>
-                            {foodList.map((item) => (
-                                <Grid item xs={6} sm={6} md={3} key={item.id}>
-                                    <ProductCard food={item} id={item.id} />
+                            {foodList?.map((item) => (
+                                <Grid item xs={6} sm={6} md={3} key={item?.id}>
+                                    <ProductCard food={item} id={item?._id} image={item?.image?.url} />
                                 </Grid>
                             ))}
                         </Grid>
                     </Box><Box mt={3} sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <Pagination
+                        {/* <Pagination
                             count={totalItems}
                             page={currentPage}
                             onChange={handlePageChange}
-                            className="pagination-root" />
+                            className="pagination-root" /> */}
                     </Box>
                 </Container>
             )}

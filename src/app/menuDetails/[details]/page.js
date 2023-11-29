@@ -10,26 +10,27 @@ import { Oswald } from 'next/font/google';
 const osfant = Oswald({ subsets: ['latin'] });
 
 const FoodImg = ({ path, }) => {
-    const url = `${apiUrl.foodImg}${path}`
+    // const url = `${apiUrl.foodImg}${path}`
     return (
         <CardMedia
             component="img"
             alt="Product Image"
             height="400"
-            image={url}
+            image={path}
         />
     )
 }
 const MenuDetails = ({ params }) => {
-    const { data: getFoodDetails } = useGetfoodDetailsApiQuery(params.details)
+    const { data: getFoodDetails } = useGetfoodDetailsApiQuery({ id: params.details })
     const [details, setDetails] = useState('')
     const routerLink = useRouter()
+    console.log("id", params.details)
 
-    console.log("foodDetails", getFoodDetails?.data)
+    console.log("foodDetails", getFoodDetails?.product)
 
     useEffect(() => {
         if (getFoodDetails) {
-            setDetails(getFoodDetails?.data)
+            setDetails(getFoodDetails?.product)
         }
     }, [getFoodDetails])
 
@@ -51,14 +52,14 @@ const MenuDetails = ({ params }) => {
                         <Grid container spacing={2} padding={10}>
                             <Grid item xs={12} sm={6} md={6}>
                                 <Box sx={{ display: 'flex', justifyContent: 'center', }}>
-                                    <FoodImg path={details?.thumbnail} />
+                                    <FoodImg path={details?.image?.url} />
                                 </Box>
                             </Grid>
                             <Grid item xs={12} sm={6} md={6} >
                                 <Box ml={10}>
                                     <Stack direction="column" mb={1}>
                                         <Typography variant="body1" color="gray">Name</Typography>
-                                        <Typography variant="h6" className={osfant.className}>{details?.name}</Typography>
+                                        <Typography variant="h6" className={osfant.className}>{details?.productname}</Typography>
                                     </Stack>
                                     <Stack direction="column" mb={1}>
                                         <Typography variant="body1" color="gray">Description</Typography>
@@ -66,7 +67,7 @@ const MenuDetails = ({ params }) => {
                                     </Stack>
                                     <Stack direction="column">
                                         <Typography variant="body1" color="gray">Price</Typography>
-                                        <Typography variant="h6" className={osfant.className}>₹200</Typography>
+                                        <Typography variant="h6" className={osfant.className}>₹{details?.price}</Typography>
                                     </Stack>
                                 </Box>
                             </Grid>

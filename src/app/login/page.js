@@ -13,11 +13,11 @@ import { showSuccess, showError } from '../utils/toast';
 // import { LoadingButton } from '@mui/lab';
 
 const LoginPage = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        console.log('Username:', username);
+        console.log('email:', email);
         console.log('Password:', password);
     };
     const [isLoading, setIsLoading] = useState(false);
@@ -44,20 +44,20 @@ const LoginPage = () => {
     }, [AddLoginInfo, dispatch, route, isLoading])
 
     // const LoginSchema = Yup.object().shape({
-    //     username: Yup.string().required('UserName is required'),
+    //     email: Yup.string().required('email is required'),
     //     password: Yup.string().required('Password is required'),
     // });
 
     const formik = useFormik({
         initialValues: {
-            username: '',
+            email: '',
             password: '',
             remember: true,
         },
         // validationSchema: LoginSchema,
         onSubmit: (values) => {
             AddLogin({
-                username: values.username,
+                email: values.email,
                 password: values.password
             })
             setIsLoading(true);
@@ -87,13 +87,13 @@ const LoginPage = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="username"
-                                label="Username"
-                                name="username"
-                                autoComplete="username"
+                                id="email"
+                                label="email"
+                                name="email"
+                                autoComplete="email"
                                 autoFocus
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={email}
+                                onChange={(e) => setemail(e.target.value)}
                             />
                             <TextField
                                 variant="outlined"
@@ -137,13 +137,13 @@ const LoginPage = () => {
                                 <Stack spacing={3}>
                                     <TextField
                                         fullWidth
-                                        autoComplete="username"
+                                        autoComplete="email"
                                         label="User Name"
-                                        value={values.username}
+                                        value={values.email}
                                         onChange={handleChange}
-                                        {...getFieldProps('username')}
-                                        error={Boolean(touched.username && errors.username)}
-                                        helperText={touched.username && errors.username}
+                                        {...getFieldProps('email')}
+                                        error={Boolean(touched.email && errors.email)}
+                                        helperText={touched.email && errors.email}
                                     />
 
                                     <TextField

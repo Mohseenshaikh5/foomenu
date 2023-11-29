@@ -13,10 +13,10 @@ const SallerData = apiBasePath.injectEndpoints({
             }),
         }),
         getfoodMenuApi: build.mutation({
-            query: (data) => ({
+            query: () => ({
                 url: `${apiUrl.foodMenu}`,
-                method: "POST",
-                body: data,
+                method: "GET",
+                // body: data,
 
             }),
         }),
@@ -29,8 +29,8 @@ const SallerData = apiBasePath.injectEndpoints({
             }),
         }),
         getfoodDetailsApi: build.query({
-            query: (id) => ({
-                url: `${apiUrl.foodDetails}?food=${id}`,
+            query: ({ id }) => ({
+                url: `${apiUrl.foodDetails}${id}`,
                 method: "GET",
 
             }),

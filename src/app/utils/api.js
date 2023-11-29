@@ -1,8 +1,9 @@
 
-const baseUrl = 'https://beta-api.foodsyindia.com/';
+// const baseUrl = 'https://beta-api.foodsyindia.com/';
+const baseUrl = 'http://localhost:8080/api/v1/';
 
 const apiUrl = {
-    signIn: `${baseUrl}accounts/sign-in/`,
+    signIn: `${baseUrl}user/login`,
     seller: `${baseUrl}foodsy/sellers/`,
     // approvel_deactivate_saller: `${baseUrl}foodsy/approve-seller/`,
     // activate_deactivate_saller: `${baseUrl}foodsy/activate-seller/`,
@@ -23,15 +24,15 @@ const apiUrl = {
     // menu
 
     foodImg: `${baseUrl}menu`,
-    foodMenu: `${baseUrl}foodsy/menu/`,
+    foodMenu: `${baseUrl}product/get-product`,
+    foodSearch: `${baseUrl}product/search`,
     foodUpdate: `${baseUrl}foodsy/food-item/`,
-    foodDetails: `${baseUrl}foodsy/food-item/`,
+    foodDetails: `${baseUrl}product/`,
     foodDelete: `${baseUrl}foodsy/food-item/`,
     variants: `${baseUrl}foodsy/food-variant/`,
     variantsDelete: `${baseUrl}foodsy/food-variant/`,
     foodApprove: `${baseUrl}foodsy/approve-food/`,
     foodActivate: `${baseUrl}foodsy/activate-food/`,
-    foodSearch: `${baseUrl}foodsy/find-food/`,
 
 
     // common
