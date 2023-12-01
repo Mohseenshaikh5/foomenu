@@ -14,19 +14,7 @@ const osfant = Vina_Sans({
 })
 
 const inter = Inter({ subsets: ['latin'] })
-const FoodImg = ({ url, handleRoute, id }) => {
-    // const url = `${apiUrl.foodImg}${path}`
-    return (
-        <CardMedia
-            component="img"
-            alt="Product Image"
-            height="250"
-            image={url}
-            onClick={() => handleRoute(id)}
-        />
 
-    )
-}
 const ProductCard = ({ food, id, image }) => {
     const { productname, price } = food
 
@@ -37,17 +25,25 @@ const ProductCard = ({ food, id, image }) => {
 
     return (
         <>
-            <Card>
-                <CardContent  >
-                    <FoodImg url={image} handleRoute={() => handleRouting(id)} id={id} />
-                    <Typography variant="h5" gutterBottom className={osfant.className} textAlign="center">
+            <Card style={{ height: '300px', /* Set the desired height */ }} onClick={() => handleRouting(food._id)}>
+                <CardMedia
+                    component="img"
+                    alt="Product Image"
+                    height="50%"
+                    image={food?.image?.url}
+                    sx={{ objectFit: 'contain' }}
+
+                />
+                <CardContent>
+                    <Typography variant="h5" gutterBottom textAlign="center" className={osfant.className} >
                         {productname}
                     </Typography>
-                    <Typography variant="h6" color="textSecondary" className={osfant.className} textAlign="center">
+                    <Typography variant="h6" color="textSecondary" textAlign="center" className={osfant.className} >
                         ₹{price}
                     </Typography>
                 </CardContent>
             </Card>
+
         </>
 
     )

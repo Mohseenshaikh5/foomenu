@@ -31,6 +31,7 @@ const LoginPage = () => {
     useEffect(() => {
         if (AddLoginInfo.isSuccess) {
             dispatch(authTokenAction(AddLoginInfo.data.access));
+            console.log("login", dispatch(authTokenAction(AddLoginInfo.data.access)))
             alert("Welcome to Foodsy !! ")
             route.push('/', { replace: true });
             saveUser(AddLoginInfo.data)

@@ -1,60 +1,64 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../../componants/card/page'
-import { Box, Button, Container, Grid, Card, Typography } from '@mui/material';
-const images = [
-    {
-        thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkW7L8Xo9sF5oR45e0B4wSlfoiOLCFF3g8hQ&usqp=CAU',
-        name: "checken",
-        // price: "200"
-    },
-    {
-        thumbnail: "https://img.bestrecipes.com.au/iyddCRce/br/2019/02/1980-crunchy-chicken-twisties-drumsticks-951509-1.jpg",
-        name: "checken",
-        // price: "200"
-    },
-    {
-        thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkW7L8Xo9sF5oR45e0B4wSlfoiOLCFF3g8hQ&usqp=CAU',
-        name: "checken",
-        // price: "200"
-    },
-    {
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRXfsQi6DlCivDRmPiGlYgyMsF6OQKnvi0w&usqp=CAU",
-        name: "checken",
-        // price: "200"
-    },
-    {
-        thumbnail: "https://img.bestrecipes.com.au/iyddCRce/br/2019/02/1980-crunchy-chicken-twisties-drumsticks-951509-1.jpg",
-        name: "checken",
-        // price: "200"
-    },
-    {
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRXfsQi6DlCivDRmPiGlYgyMsF6OQKnvi0w&usqp=CAU",
-        name: "checken",
-        // price: "200"
-    },
+import { Container, Grid, Typography, CardMedia, Stack, Card, Box, IconButton } from '@mui/material'
+import { useGetCategoryProductApiMutation } from '@/app/redux/services/menu';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useRouter } from 'next/navigation';
 
-    // Add more image paths as needed
-];
+import { Oswald } from 'next/font/google';
+
+const osfant = Oswald({ subsets: ['latin'] });
+
 const Product = ({ params }) => {
-    console.log("ID", params?.menu);
+    const categoryId = params.menu;
+    const routerLink = useRouter()
+    const [allCategoryProduct] = useGetCategoryProductApiMutation();
+    const [categoryProduct, setCategoryProduct] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await allCategoryProduct(categoryId);
+                setCategoryProduct(result?.data?.products || []);
+            } catch (error) {
+                console.log('Error', error);
+            }
+        };
+
+        fetchData();
+    }, [allCategoryProduct, categoryId]);
+
+
 
     return (
         <>
-            <Container maxWidth="xl" sx={{ marginTop: "100px" }}>
-                {/* <Typography variant='h1'>{params?.menu}</Typography> */}
-                <Box>
-                    <Grid container spacing={4}>
-                        {images.map((item) => (
-                            <Grid item xs={6} sm={6} md={3} key={item.id}>
-                                <ProductCard food={item} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-            </Container>
+            <Box mt={10}>
+                <Container maxWidth="xl">
+                    <Box >
+                        <Stack direction="row">
+                            <IconButton aria-label="Example" color="primary" onClick={() => routerLink.push("/")}>
+                                <ArrowBackIcon />
+                            </IconButton>
+                            <Typography variant="h6" className={osfant?.className}>{categoryProduct?.category?.category}</Typography>
+                        </Stack>
+                    </Box>
+                </Container>
+                <Container maxWidth="lg" sx={{ marginTop: '20px' }}>
+                    <Box>
+                        <Grid container spacing={4}>
+                            {categoryProduct.map((item) => (
+                                <Grid item xs={6} sm={6} md={3} key={item._id}>
+                                    <ProductCard food={item} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+                </Container>
+            </Box>
         </>
     );
+
 };
 
 

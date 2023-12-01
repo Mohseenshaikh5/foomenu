@@ -36,7 +36,8 @@ const apiUrl = {
 
 
     // common
-    category: `${baseUrl}common/category`,
+    category: `${baseUrl}category/get-category`,
+    categoryProduct: `${baseUrl}category/categoryproduct/`,
     subcategories: `${baseUrl}common/sub-categories`,
     city: `${baseUrl}common/city`,
     state: `${baseUrl}common/state`,

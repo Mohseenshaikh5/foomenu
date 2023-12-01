@@ -25,7 +25,7 @@ const SliderImg = ({ images }) => {
     const [currentSetIndex, setCurrentSetIndex] = useState(0);
     const itemsPerSet = 6;
 
-    const totalSets = Math.ceil(images.length / itemsPerSet);
+    const totalSets = Math.ceil(images?.length / itemsPerSet);
 
     const nextSet = () => {
         setCurrentSetIndex((prevIndex) => (prevIndex + 1) % totalSets);
@@ -39,7 +39,7 @@ const SliderImg = ({ images }) => {
         router.push(`/menuItem/${id}`);
     };
 
-    const Logo = ({ path, id }) => {
+    const Img = ({ path, id }) => {
         const url = `${apiUrl.Logo}${path}`;
         return (
             <img
@@ -47,8 +47,8 @@ const SliderImg = ({ images }) => {
                 alt={`Slide ${currentSetIndex + 1}`}
                 style={{
                     borderRadius: '1000px',
-                    width: '55%',
-                    height: '100%',
+                    width: '40%',
+                    height: '70%',
                     boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
                     cursor: 'pointer',
                 }}
@@ -87,10 +87,10 @@ const SliderImg = ({ images }) => {
                 </Stack>
                 <Box className={style.slider}>
                     <Grid container spacing={1} justifyContent="center">
-                        {images.slice(currentSetIndex * itemsPerSet, (currentSetIndex + 1) * itemsPerSet).map((image, index) => (
-                            <Grid item xs={2} sm={2} md={2} key={index}>
-                                <Logo path={image.logo} id={image.id} />
-                                <Typography className={osfant.className} ml={3} variant="subtitle2">{image.name}</Typography>
+                        {images?.slice(currentSetIndex * itemsPerSet, (currentSetIndex + 1) * itemsPerSet).map((image, index) => (
+                            <Grid item xs={3} sm={3} md={2} key={index}>
+                                <Img path={image?.image?.url} id={image?._id} />
+                                <Typography className={osfant.className} ml={3} variant="subtitle2">{image?.category}</Typography>
                             </Grid>
                         ))}
                     </Grid>

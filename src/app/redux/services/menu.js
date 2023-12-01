@@ -35,9 +35,24 @@ const SallerData = apiBasePath.injectEndpoints({
 
             }),
         }),
+        getCategoryProductApi: build.mutation({
+            query: (id) => ({
+                url: `${apiUrl.categoryProduct}${id}`,
+                method: "POST",
 
+            }),
+        }),
+
+        getCategoryApi: build.query({
+            query: () => ({
+                url: `${apiUrl.category}`,
+                method: "GET",
+                // body: data,
+
+            }),
+        }),
 
     }),
     overrideExisting: false,
 });
-export const { useGetSallerApiMutation, useGetfoodMenuApiMutation, useGetfoodSearchApiMutation, useGetfoodDetailsApiQuery } = SallerData;
+export const { useGetSallerApiMutation, useGetfoodMenuApiMutation, useGetfoodSearchApiMutation, useGetfoodDetailsApiQuery, useGetCategoryApiQuery, useGetCategoryProductApiMutation } = SallerData;

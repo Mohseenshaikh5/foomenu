@@ -52,9 +52,7 @@ const FoodItem = () => {
         }
     }
 
-    useEffect(() => {
-        fatchFoodData()
-    }, [loadData])
+
 
     const handleRoute = (name) => {
         route.push(name)
@@ -65,13 +63,12 @@ const FoodItem = () => {
     const searchFood = async (query) => {
         const body = {
             search: query,
-            // page: currentPage,
         };
 
         try {
             const result = await foodSearch(body);
             setFoodList(result?.data?.product)
-            console.log("search", result?.product)
+            console.log("search", result?.data?.product)
         } catch (error) {
             console.log('error', error);
         }
@@ -86,6 +83,10 @@ const FoodItem = () => {
             searchFood(value);
         }
     };
+
+    useEffect(() => {
+        fatchFoodData()
+    }, [loadData])
     // pigmetion handle pages
     // const handlePageChange = (event, newPage) => {
     //     setCurrentPage(newPage);

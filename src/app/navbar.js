@@ -67,7 +67,7 @@ const Navbar = () => {
                             }}
                             onClick={() => handleCloseNavMenu('/')}
                         >
-                            <img src='https://lens-storage.storage.googleapis.com/png/d293640d9a5f4ec4970f503c33b0eddf' width="70px" height="60px" alt="logo" />
+                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzsBgApMeudMfjOMc4MiM5fD9qhDkwrFxBiA&usqp=CAU' width="50px" height="50px" alt="logo" />
                         </Typography>
 
                         <Typography
@@ -87,7 +87,7 @@ const Navbar = () => {
                             }}
                             onClick={() => handleCloseNavMenu('/')}
                         >
-                            <img src='https://lens-storage.storage.googleapis.com/png/d293640d9a5f4ec4970f503c33b0eddf' width="70px" height="60px" alt="logo" />
+                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzsBgApMeudMfjOMc4MiM5fD9qhDkwrFxBiA&usqp=CAU' width="50px" height="50px" alt="logo" />
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 

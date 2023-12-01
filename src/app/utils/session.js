@@ -11,7 +11,7 @@ export function saveUser(result) {
     sessionStorage.setItem('phone', result.user.mobile)
     sessionStorage.setItem('email', result.user.email)
     sessionStorage.setItem('role', result.user.role)
-    sessionStorage.setItem('photo', result.user.profile.url)
+    // sessionStorage.setItem('photo', result.user.profile.url)
     sessionStorage.setItem('account_id', result.user.Id)
     // sessionStorage.setItem('is_active', result.user.is_active)
 

@@ -1,7 +1,9 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import SliderImg from './page'
-import { useGetSallerApiMutation } from '@/app/redux/services/menu';
+// import { useGetCategoryApiQuery } from '@/app/redux/services/menu';
+import { useGetCategoryApiQuery } from '@/app/redux/services/menu';
+
 const image = [
     {
         logo: 'https://beta-api.foodsyindia.com/menu/food-thmb/D-PR00002162.jpg',
@@ -66,32 +68,21 @@ const image = [
     // Add more image paths as needed
 ];
 const SliderPage = () => {
+    const { data: getCategory } = useGetCategoryApiQuery();
     const [food, setFood] = useState([]);
-    const [foodCategory] = useGetSallerApiMutation();
+    const [load, setLoad] = useState(false)
 
-    const fetchFood = async () => {
-        const body = {
-            pincode: '431001',
-            city: 1,
-            verified: 'Y',
-            active: 'Y',
-        };
-        try {
-            const result = await foodCategory(body);
-            setFood(result?.data?.sellers || []);
-            console.log('food', result?.data?.sellers);
-        } catch (error) {
-            console.error('error', error);
-        }
-    };
+
 
     useEffect(() => {
-        fetchFood();
-    }, []); // Only fetch on mount
+        setFood(getCategory?.category);
+        console.log('categoty', getCategory?.category);
+
+    }, [load]);
 
     return (
         <>
-            <SliderImg images={image} />
+            <SliderImg images={food} />
         </>
     );
 
