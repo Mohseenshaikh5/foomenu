@@ -25,13 +25,16 @@ const ProductCard = ({ food, id, image }) => {
 
     return (
         <>
-            <Card style={{ height: '300px', /* Set the desired height */ }} onClick={() => handleRouting(food._id)}>
+            <Card sx={{ boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)", height: '300px' }} onClick={() => handleRouting(food._id)}>
+
+                {/* <Card style={{ height: '300px', }} > */}
                 <CardMedia
                     component="img"
                     alt="Product Image"
                     height="50%"
                     image={food?.image?.url}
-                    sx={{ objectFit: 'contain' }}
+                    sx={{ objectFit: 'contain', marginTop: "10px" }}
+
 
                 />
                 <CardContent>

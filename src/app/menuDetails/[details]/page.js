@@ -6,9 +6,13 @@ import { apiUrl } from '@/app/utils/api'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/navigation'
 import { Oswald } from 'next/font/google';
+import { Vina_Sans } from 'next/font/google';
 
-const osfant = Oswald({ subsets: ['latin'] });
 
+const osfant = Vina_Sans({
+    weight: '400',
+    subsets: ['latin'],
+})
 
 const MenuDetails = ({ params }) => {
     const { data: getFoodDetails } = useGetfoodDetailsApiQuery({ id: params.details })
@@ -38,7 +42,7 @@ const MenuDetails = ({ params }) => {
                     </Box>
                 </Container>
                 <Container maxWidth="md" sx={{ marginTop: "20px" }}>
-                    <Card sx={{ backgroundColor: "tomato" }}>
+                    <Card sx={{ backgroundColor: "whitesmoke", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)" }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6} md={6}>
                                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -54,22 +58,22 @@ const MenuDetails = ({ params }) => {
                             <Grid item xs={12} sm={6} md={6}>
                                 <Box p={2}>
                                     <Stack direction="column" mb={1}>
-                                        <Typography variant="body1" color="black">
+                                        <Typography variant="body1" color="gray">
                                             Name
                                         </Typography>
-                                        <Typography variant="h6" color="white" className={osfant.className}>{details?.productname}</Typography>
+                                        <Typography variant="h6" className={osfant.className}>{details?.productname}</Typography>
                                     </Stack>
                                     <Stack direction="column" mb={1}>
-                                        <Typography variant="body1" color="black">
+                                        <Typography variant="body1" color="gray">
                                             Description
                                         </Typography>
-                                        <Typography variant="h6" color="white" className={osfant.className}>{details?.description}</Typography>
+                                        <Typography variant="h6" className={osfant.className}>{details?.description}</Typography>
                                     </Stack>
                                     <Stack direction="column">
-                                        <Typography variant="body1" color="black">
+                                        <Typography variant="body1" color="gray">
                                             Price
                                         </Typography>
-                                        <Typography variant="h6" color="white" className={osfant.className}>₹{details?.price}</Typography>
+                                        <Typography variant="h6" className={osfant.className}>₹{details?.price}</Typography>
                                     </Stack>
                                 </Box>
                             </Grid>
