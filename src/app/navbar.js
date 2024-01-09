@@ -95,14 +95,13 @@ const Navbar = () => {
                         </Box>
 
                         <Box sx={{ flexGrow: 0 }}>
-
-
+                            {/* 
                             <Tooltip title="Open settings">
                                 <IconButton onMouseOver={handleOpenUserMenu} onMouseOut={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <Person2Icon color="primary" />
                                 </IconButton>
-                            </Tooltip>
-                            <Menu
+                            </Tooltip> */}
+                            {/* <Menu
                                 sx={{ mt: '45px', width: "100pz" }}
                                 id="menu-appbar"
                                 anchorEl={anchorElUser}
@@ -121,7 +120,7 @@ const Navbar = () => {
                                 <MenuItem onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center" onClick={() => handleCloseNavMenu("/login")} >login</Typography>
                                 </MenuItem>
-                            </Menu>
+                            </Menu> */}
                         </Box>
                     </Toolbar>
                 </Container>

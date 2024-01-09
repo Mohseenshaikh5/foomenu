@@ -7,6 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/navigation'
 import { Oswald } from 'next/font/google';
 import { Vina_Sans } from 'next/font/google';
+// import { useRouter } from 'next/router'
 
 
 const osfant = Vina_Sans({
@@ -14,10 +15,13 @@ const osfant = Vina_Sans({
     subsets: ['latin'],
 })
 
+
+
 const MenuDetails = ({ params }) => {
     const { data: getFoodDetails } = useGetfoodDetailsApiQuery({ id: params.details })
     const [details, setDetails] = useState('')
     const routerLink = useRouter()
+    // const routerId = useRouter()
     console.log("id", params.details)
 
     console.log("foodDetails", getFoodDetails?.product)
@@ -26,7 +30,16 @@ const MenuDetails = ({ params }) => {
         if (getFoodDetails) {
             setDetails(getFoodDetails?.product)
         }
+
+        console.log("RouterID", routerLink.query)
+
     }, [getFoodDetails])
+
+
+
+
+
+
 
     return (
         <>
@@ -34,6 +47,7 @@ const MenuDetails = ({ params }) => {
                 <Container maxWidth="xl">
                     <Box >
                         <Stack direction="row">
+                            {/* <pre>Params : {JSON.stringify(params)}</pre> */}
                             <IconButton aria-label="Example" color="primary" onClick={() => routerLink.push("/")}>
                                 <ArrowBackIcon />
                             </IconButton>
@@ -105,3 +119,5 @@ const MenuDetails = ({ params }) => {
 }
 
 export default MenuDetails
+
+
